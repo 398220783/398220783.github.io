@@ -7,6 +7,12 @@
         {
             "type_name": "CODM",
             "type_id": "CODM"
+        },{
+            "type_name": "动画",
+            "type_id": "动画"
+        },{
+            "type_name": "动漫",
+            "type_id": "动漫"
         },
         {
             "type_name": "潮剧",

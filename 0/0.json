@@ -1,22 +1,5 @@
 {
-    "rules": [
-        {
-            "host": "v.douyin.com",
-            "rule": [
-                "douyinvod.com",
-                "/video/tos/cn/",
-                "mime_type="
-            ]
-        },
-        {
-            "host": "www.iesdouyin.com",
-            "rule": [
-                "douyinvod.com",
-                "/video/tos/cn/",
-                "mime_type="
-            ]
-        }
-    ],
+ 
     "sites": [
         {
             "key": "360",
@@ -754,5 +737,5 @@
     ],
     "wallpaper": "https://tool.weetai.cn/api",
     
-"spider": "https://www.gazuo.repl.co/jar/1001.jar;md5;c474a7a9d106ef348f4ebdc7705c6d38"
+"spider": "https://dxawi.github.io/jar/1001.jar;md5;c474a7a9d106ef348f4ebdc7705c6d38"
 }

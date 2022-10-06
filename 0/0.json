@@ -43,7 +43,7 @@
 
 {"key":"csp_77","name":"七七|(SP)","type":3,"api":"csp_Kunyu77","searchable":1,"quickSearch":1,"filterable":1,"jar":"https://kebedd69.github.io/TVbox-interface/ext/1003seven+.jar;md5;5f6a69ac1b85bc9f4fc3b352009c6739"},
 
-{"key":"Bili","name":"Bili|(SP)","type":3,"api":"csp_Bili","searchable":1,"quickSearch":0,"filterable":1,"ext":"https://gazuo.github.io/json/BiBi.jsonn"},
+{"key":"Bili","name":"Bili|(SP)","type":3,"api":"csp_Bili","searchable":1,"quickSearch":0,"filterable":1,"ext":"https://gazuo.github.io/json/BiBi.json"},
 
 //直播系
 

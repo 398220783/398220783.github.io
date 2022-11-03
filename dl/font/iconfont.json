@@ -1,0 +1,37 @@
+{
+  "id": "2055802",
+  "name": "工具集",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "2249634",
+      "name": "缩短",
+      "font_class": "suoduan",
+      "unicode": "e649",
+      "unicode_decimal": 58953
+    },
+    {
+      "icon_id": "2369005",
+      "name": "安全",
+      "font_class": "anquan",
+      "unicode": "e60b",
+      "unicode_decimal": 58891
+    },
+    {
+      "icon_id": "12261968",
+      "name": "还原",
+      "font_class": "rotate-ccw",
+      "unicode": "e6a2",
+      "unicode_decimal": 59042
+    },
+    {
+      "icon_id": "14331467",
+      "name": "检测",
+      "font_class": "jiance",
+      "unicode": "e801",
+      "unicode_decimal": 59393
+    }
+  ]
+}

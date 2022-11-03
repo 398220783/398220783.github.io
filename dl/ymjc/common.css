@@ -1,0 +1,111 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #f8f8f8;
+}
+.navbar-default {
+  background-color: #1376d9;
+  border: none;
+  border-radius: 0px;
+  margin: 0;
+}
+.navbar-default .icon-bar {
+  background-color: #fff !important;
+}
+.navbar-default .navbar-brand {
+  line-height: 30px;
+  padding: 10px 10px !important;
+}
+.navbar-default .navbar-brand h1 {
+  margin: 0;
+  color: #fbfbfb;
+  display: none;
+  font-size: 20px;
+}
+.navbar-default .navbar-brand img {
+  width: 200px;
+}
+.navbar-default .navbar-collapse {
+  height: auto;
+  max-height: none;
+}
+.navbar-default .navbar-right li a {
+  padding: 0 20px;
+  color: #fbfbfb;
+  font-size: 16px;
+  line-height: 80px;
+}
+.navbar-default .navbar-right li a:hover,
+.navbar-default .navbar-right li a:focus {
+  color: #0099ff !important;
+  background-color: #fbfbfb !important;
+  font-size: 16px;
+}
+.navbar-default .navbar-right li .dropdown-menu {
+  background-color: #31b17f;
+}
+.navbar-default .navbar-right li .dropdown-menu li a {
+  color: #fbfbfb !important;
+}
+.navbar-default .navbar-right li .dropdown-menu li a:hover,
+.navbar-default .navbar-right li .dropdown-menu li a:focus {
+  color: #0099ff !important;
+}
+footer {
+  margin-top: 100px;
+  background-color: #222632;
+  padding: 50px 0;
+}
+footer p {
+  margin: 10px 0;
+  text-align: center;
+  font-size: 16px;
+  color: #fff;
+}
+footer p a {
+  color: #fff;
+}
+footer p .cyxyv img {
+  width: 126px;
+}
+@media screen and (max-width: 992px) {
+  .navbar-right li a {
+    padding: 0 10px !important;
+  }
+  footer {
+    padding: 25px 0;
+  }
+  footer p {
+    font-size: 12px;
+  }
+  footer p a {
+    color: #fff;
+  }
+}
+@media screen and (max-width: 763px) {
+  .navbar-default {
+    background-color: #1376d9;
+    border: none;
+    border-radius: 0px;
+  }
+  .navbar-default .navbar-brand {
+    padding: 10px 10px;
+  }
+  .navbar-default .navbar-brand h1 {
+    line-height: 30px;
+    display: inline-block;
+  }
+  .navbar-default .navbar-brand img {
+    display: none;
+  }
+  .dropdown-menu {
+    background-color: #1376d9;
+  }
+  .dropdown-menu li {
+    padding: 10px 0;
+  }
+  footer .cyxyv img {
+    width: 100px;
+  }
+}

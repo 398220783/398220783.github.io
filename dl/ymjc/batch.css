@@ -1,0 +1,233 @@
+.main {
+  padding-top: 200px;
+  background: url(https://ae01.alicdn.com/kf/Hab756a9359bd454ba97f34e8bd5dd8d53.png) no-repeat;
+  background-size: 100% 500px;
+}
+.main h1 {
+  font-size: 50px;
+  margin-top: 30px;
+  text-align: center;
+  color: #fbfbfb;
+  font-weight: 600;
+}
+.main .mainbox {
+  margin-top: 80px;
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
+}
+.main .mainbox textarea {
+  resize: none;
+  outline: none;
+  width: 100%;
+  height: 200px;
+  border-radius: 10px;
+  padding: 20px;
+  border: 1px solid #d5dae2;
+}
+.main .mainbox textarea:focus {
+  border-color: skyblue;
+}
+.main .mainbox .inputdiv input {
+  outline: none;
+  width: 100%;
+  height: 40px;
+  line-height: 40px;
+  padding-left: 20px;
+  border-radius: 10px ;
+  border: 1px solid #d5dae2;
+}
+.main .mainbox .inputdiv input:focus {
+  border-color: skyblue;
+}
+.main .mainbox .jiancetype,
+.main .mainbox .uabox {
+  margin: 20px 0;
+}
+.main .mainbox .jiancetype p,
+.main .mainbox .uabox p {
+  font-weight: 600;
+  color: #1e2022;
+  font-size: 16px;
+  text-align: center;
+  line-height: 42px;
+}
+.main .mainbox .btnbox {
+  padding: 20px 0;
+}
+.main .mainbox .btnbox #start {
+  outline: none;
+  width: 100%;
+  height: 40px;
+  font-size: 16px;
+  border: none;
+  border-radius: 10px;
+  color: #fbfbfb;
+  background-color: #000;
+}
+.main .mainbox .btnbox #clear {
+  display: block;
+  margin: 20px auto 0;
+  outline: none;
+  width: 100%;
+  max-width: 200px;
+  height: 40px;
+  font-size: 16px;
+  border: none;
+  border-radius: 10px;
+  color: red;
+  background-color: #fff;
+  border: 1px solid red;
+}
+.main .mainbox .btnbox #clear:hover {
+  background-color: red;
+  color: #fff;
+  text-decoration: none;
+}
+.main .mainbox .btnbox button:hover {
+  opacity: 0.9;
+}
+.main .result {
+  padding-top: 80px;
+}
+.main .result h2 {
+  margin-top: 30px;
+  text-align: center;
+}
+.main .result .resultinfo {
+  font-size: 16px;
+  margin-bottom: 30px;
+}
+.main .result .resultinfo span {
+  font-weight: 600;
+}
+.main .result .table {
+  font-size: 18px;
+}
+.main .result .table th {
+  font-size: 20px;
+}
+.main .result .table th,
+.main .result .table td {
+  text-align: center;
+}
+.main .result #outexcel,
+.main .result #fuzhigreen,
+.main .result #fuzhierror,
+.main .result #shibaichongcha,
+.main .result #clear {
+  display: inline-block;
+  width: 50%;
+  height: 50px;
+  line-height: 50px;
+  max-width: 150px;
+  text-align: center;
+  border: 1px solid skyblue;
+  margin: 25px 10px 0;
+  border-radius: 5px;
+}
+.main .result #outexcel:hover {
+  background-color: #0099ff;
+  color: #fff;
+  text-decoration: none;
+}
+.main .result #fuzhigreen {
+  color: green;
+  border: 1px solid green;
+}
+.main .result #fuzhigreen:hover {
+  background-color: green;
+  color: #fff;
+  text-decoration: none;
+}
+.main .result #fuzhierror {
+  color: red;
+  border: 1px solid red;
+}
+.main .result #fuzhierror:hover {
+  background-color: #e83e8c;
+  color: #fff;
+  text-decoration: none;
+}
+.main .result #shibaichongcha {
+  color: orange;
+  border: 1px solid orange;
+}
+.main .result #shibaichongcha:hover {
+  background-color: #e83e8c;
+  color: #fff;
+  text-decoration: none;
+}
+#success,
+#error,
+#unknow {
+  cursor: pointer;
+}
+.bigmt {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.bigmt .mtk {
+  position: absolute;
+  top: 200px;
+  left: 50%;
+  height: 350px;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 500px;
+  z-index: 9999999;
+  background-color: #0099ff;
+}
+.bigmt .mtk #closebtn {
+  position: absolute;
+  top: 13px;
+  right: 15px;
+  color: #fff;
+  font-size: 24px;
+  cursor: pointer;
+}
+.bigmt .mtk #closebtn:hover {
+  color: #000;
+}
+.bigmt .mtk ul {
+  padding: 0;
+}
+.bigmt .mtk ul li {
+  width: 25%;
+  list-style: none;
+  float: left;
+  line-height: 50px;
+  text-align: center;
+  font-size: 18px;
+  background-color: #0099ff;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  border-right: 1px solid #f8f8f8;
+}
+.bigmt .mtk ul .current {
+  background-color: #fff;
+  color: #0099ff;
+}
+.bigmt .mtk textarea {
+  resize: none;
+  width: 100%;
+  height: 300px;
+  padding: 15px;
+  font-size: 16px;
+  margin: 0;
+}
+@media screen and (max-width: 763px) {
+  .main {
+    padding-top: 100px;
+  }
+  .table-responsive {
+    border: none !important;
+  }
+}

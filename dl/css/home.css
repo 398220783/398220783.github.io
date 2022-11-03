@@ -1,0 +1,69 @@
+.bx {
+  padding: 20px 0;
+}
+.plugins {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  min-height: 150px;
+  border: 1px solid #eee;
+  border-radius: 15px;
+  margin: 20px 0;
+}
+.plugins .icon {
+  padding-left: 25px;
+}
+.plugins .icon .iconfont {
+  font-size: 58px;
+  color: #0099;
+}
+.plugins .inputbox {
+  width: 100%;
+  padding: 0 20px;
+}
+.plugins .inputbox .title {
+  color: #0099;
+  font-weight: 600;
+  padding-left: 5px;
+  margin: 0 ;
+}
+.plugins .inputbox .row > div {
+  margin-top: 10px;
+}
+.plugins .inputbox input {
+  padding-left: 10px;
+  border: 1px solid #eee;
+  height: 40px;
+  width: 100%;
+  border-radius: 5px;
+  color: #666;
+}
+.plugins .inputbox button {
+  width: 100%;
+  height: 40px;
+  box-sizing: border-box;
+  background-color: #0099;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  outline: none;
+}
+.plugins .inputbox button:hover {
+  opacity: 0.8;
+}
+.plugins .inputbox input:focus {
+  outline: none;
+  box-shadow: 0px 0px 5px 1px #0099;
+}
+.plugins .inputbox .result {
+  padding-left: 10px;
+  margin-top: 5px;
+  color: #0099ff;
+  font-size: 14px;
+}
+.fuzhi {
+  display: inline-block !important;
+  width: 70px !important;
+  margin-left: 20px !important;
+  height: 30px !important;
+}

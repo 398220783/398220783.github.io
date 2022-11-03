@@ -1,0 +1,49 @@
+body,
+html {
+  height: 100vh;
+}
+.navbar {
+  margin: 0 ;
+}
+.navbar-nav {
+  margin: 0;
+}
+.navbar-default {
+  background-color: #0099;
+  border: none;
+  border-radius: 0;
+}
+.navbar-default .navbar-brand,
+.navbar-default .navbar-brand:hover,
+.navbar-default .navbar-brand:focus {
+  color: #fff;
+}
+.navbar-default .navbar-nav > li > a {
+  color: #fff;
+}
+.navbar-default .navbar-nav > li > a:hover {
+  color: #ccc;
+}
+.navbar-default .navbar-nav > .active {
+  background-color: #fff;
+}
+.navbar-default .navbar-nav > .active > a,
+.navbar-default .navbar-nav > .active > a:hover,
+.navbar-default .navbar-nav > .active > a:focus {
+  color: #0099;
+  background-color: #fff;
+}
+iframe {
+  display: block;
+  width: 100%;
+  height: calc(100vh - 82px);
+}
+.footer .Copyright {
+  text-align: center;
+  color: #666;
+}
+@media screen and (max-width: 768px) {
+  .navbar-collapse {
+    padding: 15px;
+  }
+}

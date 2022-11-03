@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>批量检测</title>
+    <meta name="keywords" content="QQ微信批量检测,域名批量检测,备案批量检测,批量端口ping,链接状态批量检测,被墙检测查询">
+    <meta name="description" content="极强批量检测工具拥有（QQ批量检测,微信批量检测,备案批量查询,绿标批量检测,二三级不死域名批量检测,链接状态批量检测,被墙检测查询,批量ping,批量端口ping）等功能，并支持节点化检测，检测查询更稳定和多样化，支持一键文本和表格导出，为用户提供方便。">
+    <link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css">
+    <script src="./jQueryDownload/jquery-3.1.1.min.js"></script>
+    <script src="./bootstrap/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="./ymjc/nice-select/nice-select.css">
+    <link rel="stylesheet" href="./ymjc/radio/style.css">
+    <script src="./ymjc/nice-select/jquery.nice-select.min.js"></script>
+    <script src="./ymjc/showmessage/js.js"></script>
+    <script src="./ymjc/excel/excel-gen.js"></script>
+    <script src="./ymjc/excel/jszip.min.js"></script>
+    <script src="./ymjc/excel/FileSaver.js"></script>
+    <script src="./js/clipboard.min.js"></script>
+    <link rel="stylesheet" href="./ymjc/batch.css">
+</head>
+<style>
+    .show_msg {
+        width: 100%;
+        height: 35px;
+        text-align: center;
+        position: fixed;
+        left: 0;
+        z-index: 999;
+    }
+    
+    .show_span {
+        display: inline-block;
+        height: 35px;
+        padding: 0 15px;
+        line-height: 35px;
+        background: rgba(0, 0, 0, 0.8);
+        border-radius: 50px;
+        color: #fff;
+        font-size: 1em;
+    }
+</style>
+
+<body>
+    <!-- 中心内容 -->
+    <div class="main">
+        <h1>批量检测</h1>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 mainbox">
+                    <textarea placeholder="请输入域名、链接或ip:端口，一行一个，回车换行，最大支持500个。" id="checkurl" oninput="evernt()"></textarea>
+                    <p style="text-align: right;font-size: 14px;color: #999;">当前输入：<i id="wnm">0</i> 条</p>
+                    <script>
+                        function evernt(){
+                            if($('#checkurl').val()==''){
+                                $('#wnm').html(0)
+                                return
+                            }
+                            var arr = $('#checkurl').val().split(/\n/)
+                            newarr = arr.filter((item)=>{
+                                return item !=''
+                            })
+                            $('#wnm').html(newarr.length)
+                        }
+                    </script>
+                    <div class="row jiancetype type11">
+                        <div class="col-md-2">
+                            <p>请选择检测类型 :</p>
+                        </div>
+                        <div class="col-md-10">
+                            <select class="wide" id="type">
+                                    <option disabled>请选择服务类型</option>
+                                    <option value="1">QQ检测</option>
+                                    <option value="2">微信检测</option>
+                                    <option value="3">备案检测</option>
+                                    <option value="12">备案接入商检测</option>
+                                    <option value="18">管局黑名单检测</option>
+                                    <option value="13">网安备案检测</option>
+                                    <option value="4">绿标检测</option>
+                                    <option value="5">二级不死检测</option>
+                                    <option value="6">被墙检测</option>
+                                    <option value="7">链接状态检测</option>
+                                    <option value="14">域名到期检测</option>
+                                    <option value="15">DNS检测</option>
+                                    <option value="9">Ping检测</option>
+                                    <option value="10">端口Ping检测</option>
+                                    <option value="11">小米检测</option>
+                                    <option value="16">金山检测</option>
+                                    <option value="17">抖音检测</option>
+                                    <option value="19">百度检测</option>
+                            </select>
+                            <script>
+                                $('#type').niceSelect();
+                            </script>
+                        </div>
+                    </div>
+                    <div class="row uabox" style="display:none;">
+                        <div class="col-md-2">
+                            <p>请选择浏览器UA :</p>
+                        </div>
+                        <div class="col-md-10">
+                            <form>
+                                <input type="radio" name="group1" value="azqq"> QQ
+                                <input type="radio" name="group1" value="azvx"> 微信
+                                <input type="radio" name="group1" value="alipay"> 支付宝
+                                <input type="radio" name="group1" value="az"> 安卓
+                                <input type="radio" name="group1" value="ios"> 苹果
+                                <input type="radio" name="group1" value="win" checked> win
+                                <input type="radio" name="group1" value="mac"> mac
+                                <input type="radio" name="group1" value="zdyua"> 自定义UA
+                            </form>
+                        </div>
+                    </div>
+                    <div class="row jiancetype" style="display:none;" id="zdyuabox">
+                        <div class="col-md-2">
+                            <p>自定义浏览器UA :</p>
+                        </div>
+                        <div class="col-md-10">
+                            <textarea id="zdyua" placeholder="请输入您的自定义UA"></textarea>
+                        </div>
+                    </div>
+                     <div class="row jiancetype" style="display:none;" id="jrsbox">
+                        <div class="col-md-2">
+                            <p>接入商类型 :</p>
+                        </div>
+                        <div class="col-md-10">
+                             <form>
+                                <input type="radio" name="group2" value="aliyun" checked="checked"> 阿里云
+                                <input type="radio" name="group2" value="tencent"> 腾讯云
+                                <input type="radio" name="group2" value="baidu"> 百度云
+                                <input type="radio" name="group2" value="zzidc"> 景安
+                                <input type="radio" name="group2" value="west"> 西部数码
+                                <input type="radio" name="group2" value="cndns"> 美橙互联
+                                <input type="radio" name="group2" value="all"> 查询全部（扣次较多,较慢不推荐）
+                            </form>
+                        </div>
+                    </div>
+					<div class="row jiancetype type22" style="display:none">
+                        <div class="col-md-2">
+                            <p>请选择检测节点 :</p>
+                        </div>
+                        <div class="col-md-10">
+                            <select class="wide" id="node">
+                                <option selected value="5">请选择节点</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="btnbox">
+                        <button id="start">开始检测</button>
+                        <button id="clear">清空</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="result">
+            <h2>检测结果</h2>
+            <div class="container resultbox">
+                <div class="row resultinfo">
+                    <div class="col-md-12" style="text-align: center;">
+                        <p style="margin-top: 15px;">
+                            <span>正常 ：[ <span style="color: green;" id="success">0</span> ]</span>
+                            <span>异常 ：[ <span style="color: red;" id="error">0</span> ]</span>
+                            <span>未知 ：[ <span style="color: gray;" id="unknow">0</span> ]</span>
+                        </p>
+                        <p><span style="font-size: 14px;color: red;">点击上方数字文本显示</span></p>
+                    </div>
+                    <div class="col-md-12" style="text-align: center;">
+                        <a href="javascript:;" id="fuzhigreen">复制正常</a>
+                        <a href="javascript:;" id="fuzhierror">复制异常</a>
+                        <a href="javascript:;" id="shibaichongcha">失败重查</a>
+                        <a href="javascript:;" id="outexcel">导出查询数据</a>
+                    </div>
+                </div>
+                <div class="table-responsive">
+                    <h2 style="color:#ccc" id="jieguotitle">暂无查询结果~</h2>
+                    <table class="table table-hover" id="test_table">
+                        <thead>
+
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="bigmt">
+        <div class="mtk">
+            <ul>
+                <li class="current" zh="zc">正常</li>
+                <li zh="yc">异常</li>
+                <li zh="wz">未知</li>
+            </ul>
+            <span class="glyphicon glyphicon-remove-sign" id="closebtn"></span>
+            <textarea></textarea>
+        </div>
+    </div>
+</body>
+
+<script>
+    function getQueryVariable(variable) {
+        var query = window.location.search.substring(1);
+        var vars = query.split("&");
+        for (var i = 0; i < vars.length; i++) {
+            var pair = vars[i].split("=");
+            if (pair[0] == variable) {
+                return pair[1];
+            }
+        }
+        return;
+    }
+    if (getQueryVariable('token')) {
+        $('#pla').attr('href', `./batch.html?token=${getQueryVariable('token')}`)
+        $('#sya').attr('href', `./?token=${getQueryVariable('token')}`)
+        $('#apia').attr('href', `./apidoc.html?token=${getQueryVariable('token')}`)
+        $('#pricea').attr('href', `./price.html?token=${getQueryVariable('token')}`)
+        $('#updata').attr('href', `./updata.html?token=${getQueryVariable('token')}`)
+        $('#help').attr('href', `./help.html?token=${getQueryVariable('token')}`)
+        $('#hezuo').attr('href', `./hezuo.html?token=${getQueryVariable('token')}`)
+    }
+    $('#token').val(getQueryVariable('token'))
+    
+    
+    // //维护
+    // if(!getQueryVariable('test')){
+    //     $('.main ').html('<h1 style="padding:200px 0;">批量检测正在维护</h1>')
+    // }
+</script>
+<script src="./ymjc/batch.js"></script>
+
+</html>

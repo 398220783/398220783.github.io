@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>首页</title>
+  <link rel="stylesheet" href="./css/scrollbar.css">
+  <link rel="stylesheet" href="./css/home.css">
+  <!-- jQuery -->
+  <script src="./jQueryDownload/jquery-3.1.1.min.js"></script>
+  <script src="./js/clipboard.min.js"></script>
+  <!-- bootstrap -->
+  <link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css">
+  <script src="./bootstrap/js/bootstrap.min.js"></script>
+  <!-- 字体图标 -->
+  <link rel="stylesheet" href="./font/iconfont.css">
+  <script src="./layer/layer.js"></script>
+</head>
+
+<body>
+  <div class="container bx">
+    <!-- 短网址缩短 -->
+    <div class="dwz plugins">
+      <div class="icon">
+        <span class="iconfont icon-suoduan"></span>
+      </div>
+      <div class="inputbox">
+        <p class="title">短网址生成</p>
+        <div class="row">
+          <div class="col-md-7">
+            <input type="text" placeholder="请输入您想要缩短的链接" id="shorturl">
+          </div>
+          <div class="col-md-3">
+            <div class="select">
+              <p data-value="" id="shorttype">选择短网址</p>
+              <ul id="dwzlist">
+              </ul>
+            </div>
+          </div>
+          <div class="col-md-2"><button id="startshort">生成</button></div>
+          <div class="col-md-12">
+            <p class="result"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- 域名检测 -->
+    <div class="jiance plugins">
+      <div class="icon">
+        <span class="iconfont icon-jiance"></span>
+      </div>
+      <div class="inputbox">
+        <p class="title">域名检测</p>
+        <div class="row">
+          <div class="col-md-7"><input type="text" placeholder="请输入您想要检测的链接" id="jcurl"></div>
+          <div class="col-md-3">
+            <div class="select">
+              <p data-value="" id="jctype">选择检测类型</p>
+              <ul>
+                <li data-value="qq">QQ检测</li>
+                <li data-value="vx">微信检测</li>
+                <li data-value="icp">备案查询</li>
+                <li data-value="jrs">备案接入商查询</li>
+                <li data-value="zzwangan">网安备案检测</li>
+                <li data-value="gl">绿标检测</li>
+                <li data-value="qiang">被墙检测</li>
+                <li data-value="httpcode">链接状态检测</li>
+                <li data-value="domainexpires">域名到期检测</li>
+                <li data-value="ping">ping检测</li>
+                <li data-value="dns">DNS检测</li>
+                <li data-value="mi">小米检测</li>
+                <li data-value="jinshan">金山检测</li>
+                <li data-value="dyjc">抖音检测</li>
+                <li data-value="baidusafe">百度检测</li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md-2"><button id="startjiance">检测</button></div>
+          <div class="col-md-12">
+            <p class="result"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- 链接还原 -->
+    <div class="huanyuan plugins">
+      <div class="icon">
+        <span class="iconfont icon-rotate-ccw"></span>
+      </div>
+      <div class="inputbox">
+        <p class="title">网址还原</p>
+        <div class="row">
+          <div class="col-md-10"><input id="huanyuanurl" type="text" placeholder="请输入您想要还原的链接"></div>
+          <div class="col-md-2"><button id="starthuanyuan">还原</button></div>
+          <div class="col-md-12">
+            <p class="result"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- 防红生成 -->
+    <div class="fanghong plugins">
+      <div class="icon">
+        <span class="iconfont icon-anquan"></span>
+      </div>
+      <div class="inputbox">
+        <p class="title">防红生成</p>
+        <div class="row">
+          <div class="col-md-5"><input type="text" placeholder="请输入您想要生成防红的链接" id="fanghongurl"></div>
+          <div class="col-md-2">
+            <div class="select">
+              <p data-value="qq" id="jiekou">QQ</p>
+              <ul>
+                <li data-value="qq">QQ接口</li>
+                <li data-value="vx">微信接口</li>
+                <li data-value="ty">通用接口</li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="select">
+              <p data-value="" id="fhtype">选择短网址</p>
+              <ul id="dwzlist">
+              </ul>
+            </div>
+          </div>
+          <div class="col-md-2"><button id="startfanghong">生成</button></div>
+          <div class="col-md-12">
+            <p class="result"></p>
+          </div>
+        </div>
+        <script>
+          $.ajax({
+            type: 'get',
+            url: '//api.dwzjh.com/api/list',
+            async: false,
+            success: function (data) {
+              if (data.code == 200) {
+                console.log(data);
+                data.data.forEach(item => {
+                  var html = `<li data-value="${item.name}">${item.domain}-[${item.remarks}]</li>`
+                  $('ul#dwzlist').append(html)
+                })
+              }
+            }
+          })
+        </script>
+      </div>
+    </div>
+  </div>
+  <script>
+    //下拉菜单
+    $(function () {
+      $(".select p").click(function (e) {
+        $('.select').removeClass("open");
+        $(this).parent().toggleClass('open');
+        e.stopPropagation();
+      });
+
+      $(".select ul li").click(function (e) {
+        var _this = $(this);
+        $(this).parent().siblings().text(_this.text());
+        $(this).parent().siblings().attr('data-value', _this.attr('data-value'));
+        _this.addClass("Selected").siblings().removeClass("Selected");
+        $(this).parent().parent().removeClass("open");
+        e.stopPropagation();
+      });
+
+      $(document).on('click', function () {
+        $(".select").removeClass("open");
+      })
+
+    });
+  </script>
+  <script>
+    function fuzhi(e){
+    var str =  $(event.target).parent().text().replace('点我复制','')
+    new ClipboardJS('.fuzhi', {
+        text: function (trigger) {
+            return str;
+        }
+    });
+    layer.msg('复制成功')
+    }
+    // 缩短
+    $('#startshort').click(function () {
+      var that = $(this)
+      var result = $(this).parent().siblings().find('.result')
+      if ($('#shorturl').val().trim() == '') return result.html('<span style="color:red;">生成链接不能为空</span>')
+      if ($('#shorttype').attr('data-value') == '') return result.html('<span style="color:red;">请选择短网址类型</span>')
+      result.html('')
+      that.attr('disabled', true).css('backgroundColor', '#ccc')
+      $.ajax({
+        type: 'get',
+        url: `//api.dwzjh.com/api/free?name=${$('#shorttype').attr('data-value')}&url=${$('#shorturl').val().trim()}`,
+        success: function (data) {
+          that.attr('disabled', false).css('backgroundColor', '#0099')
+          if (data.code == 200) {
+            result.html(data.data.url)
+            result.append('<button class="fuzhi" id="fuizhibtn" onclick="fuzhi()">点我复制</button>')
+          } else {
+            result.html(`<span style="color:red">${data.msg}</span>`)
+          }
+        }
+      })
+    })
+    //防红
+    $('#startfanghong').click(function () {
+      var that = $(this)
+      var result = $(this).parent().siblings().find('.result')
+      if ($('#fanghongurl').val().trim() == '') return result.html('<span style="color:red;">生成链接不能为空</span>')
+      if ($('#fhtype').attr('data-value') == '') return result.html('<span style="color:red;">请选择短网址类型</span>')
+      result.html('')
+      that.attr('disabled', true).css('backgroundColor', '#ccc')
+      $.ajax({
+        type: 'get',
+        url: `//api.wx.urlfh.com/dwz.php?type=${$('#jiekou').attr('data-value')}&dwzapi=${$('#fhtype').attr('data-value')}&longurl=${$('#fanghongurl').val().trim()}`,
+        success: function (data) {
+          that.attr('disabled', false).css('backgroundColor', '#0099')
+          if (JSON.parse(data).code == 1) {
+            result.html(JSON.parse(data).ae_url)
+            result.append('<button class="fuzhi" id="fuizhibtn" onclick="fuzhi()">点我复制</button>')
+          } else {
+            result.html(`<span style="color:red">${JSON.parse(data).msg}</span>`)
+          }
+        }
+      })
+    })
+    //还原
+    $('#starthuanyuan').click(function () {
+      var that = $(this)
+      var result = $(this).parent().siblings().find('.result')
+      if ($('#huanyuanurl').val().trim() == '') return result.html('<span style="color:red;">还原链接不能为空</span>')
+      result.html('')
+      that.attr('disabled', true).css('backgroundColor', '#ccc')
+      $.ajax({
+        type: 'post',
+        url: '//api.dwzjh.com/api/reduction',
+        data: {
+          url: $('#huanyuanurl').val().trim()
+        },
+        success: function (data) {
+          that.attr('disabled', false).css('backgroundColor', '#0099')
+          if (data.code == 1) {
+            result.html(data.longurl)
+            result.append('<button class="fuzhi" id="fuizhibtn" onclick="fuzhi()">点我复制</button>')
+          } else {
+            result.html(`<span style="color:red">${data.msg}</span>`)
+          }
+        }
+      })
+    })
+
+    //检测
+    $('#startjiance').click(function () {
+      var that = $(this)
+      var type = $('#jctype').attr('data-value')
+      var result = $(this).parent().siblings().find('.result')
+      if ($('#jcurl').val().trim() == '') return result.html('<span style="color:red;">还原链接不能为空</span>')
+      if (type == '') return result.html('<span style="color:red;">请选择检测类型</span>')
+      result.html('')
+      that.attr('disabled', true).css('backgroundColor', '#ccc')
+      $.ajax({
+        type: 'post',
+        url: `//api.urlzt.com/api/urlsec/${type}`,
+        data: {
+          domain: $('#jcurl').val().trim(),
+        },
+        success: function (data) {
+          data = JSON.parse(data)
+          that.attr('disabled', false).css('backgroundColor', '#0099')
+          console.log(data);
+          var html = ''
+          if (type == 'qq' || type == 'vx' || type == 'mi' || type == 'jinshan' || type == 'dyjc' || type ==
+            'baidusafe' || type == "gl" || type == "qiang" || type == "httpcode" || type == "domainexpires") {
+            data.code == 200 ? html = data.msg : html = `<span style="color:red">${data.msg}</span>`
+          } else if (type == 'icp') {
+            data.code == 200 ? html = `${data.ICPSerial}(${data.ICPType}), ${data.ICPMaster}` : html =
+              `<span style="color:red">${data.ICPSerial}</span>`
+          } else if (type == 'jrs') {
+            if (data.code != -1) {
+              var ali =
+                `<span style="color:${data.msg.ali.indexOf('未接入')==-1?'green':'red'}">${data.msg.ali}</span>`
+              var tencent =
+                `<span style="color:${data.msg.tencent.indexOf('未接入')==-1?'green':'red'}">${data.msg.tencent}</span>`
+              var baidu =
+                `<span style="color:${data.msg.baidu.indexOf('未接入')==-1?'green':'red'}">${data.msg.baidu}</span>`
+              var zzidc =
+                `<span style="color:${data.msg.zzidc.indexOf('未接入')==-1?'green':'red'}">${data.msg.zzidc}</span>`
+              var cndns =
+                `<span style="color:${data.msg.cndns.indexOf('未接入')==-1?'green':'red'}">${data.msg.cndns}</span>`
+              var west =
+                `<span style="color:${data.msg.west.indexOf('未接入')==-1?'green':'red'}">${data.msg.west}</span>`
+              html = `${ali} , ${tencent} , ${baidu} , ${zzidc} , ${cndns} , ${west}`
+            } else {
+              html = `<span style="color:red">${data.msg}</span>`
+            }
+          } else if (type == 'zzwangan') {
+            data.code == 200 ? html = `${data.name}, ${data.keep}(${data.subject}), ${data.company}, ${data.region}` : html = `<span style="color:red">${data.msg}</span>`
+          }else if(type=='ping'){
+            data.code==200? html = `请求成功~ 用时: ${data.data.ping_avg}, IP地址: ${data.data.ip}(${data.data.node})` : html = `<span style="color:red">${data.msg}</span>`
+          }else if(type =='dns'){
+            data.code==200? html = `DNS1: ${data.DNS1}, DNS2: ${data.DNS2}` : html= `<span style="color:red">${data.msg}</span>`
+          } 
+          result.html(html)
+        }
+      })
+    })
+  </script>
+</body>
+
+</html>

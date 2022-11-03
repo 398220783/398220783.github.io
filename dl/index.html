@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>短网址检测防红还原四合一</title>
+  <meta name="keywords" content="短网址,域名检测,防红,短网址还原工具集">
+  <!-- jQuery -->
+  <script src="./jQueryDownload/jquery-3.1.1.min.js"></script>
+  <!-- bootstrap -->
+  <link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css">
+  <script src="./bootstrap/js/bootstrap.min.js"></script>
+  <!-- 首页样式 -->
+  <link rel="stylesheet" href="./css/index.css">
+</head>
+
+<body>
+  <!-- 导航 -->
+  <nav class="navbar navbar-default">
+    <div class="container">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+          data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">企业内部使用工具集</a>
+      </div>
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav navbar-right">
+          <ul class="nav navbar-nav" id="lilist">
+            <li class="active"><a href="javascript:;" j-src="./home.html">首页</a></li>
+            <li><a href="javascript:;" j-src="./plsuo.html">批量缩短</a></li>
+            <li><a href="javascript:;" j-src="./pljc.html">批量检测</a></li>
+            <li><a href="javascript:;" j-src="./plfh.html">批量防红</a></li>
+            <li><a href="javascript:;" j-src="./plhy.html">批量还原</a></li>
+          </ul>
+        </ul>
+      </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+  </nav>
+  <iframe src="./home.html" frameborder="0" id="body"></iframe>
+  <div class="footer">
+    <div class="container">
+        <p class="Copyright">Copyright XXX 2020 - 备xxxxxxxx号-x</p>
+    </div>
+  </div>
+  <script>
+    $('#lilist li').click(function () {
+      $(this).addClass('active').siblings().removeClass('active')
+      // 切换文件
+      let src = $(this).find('a').attr('j-src')
+      $('#body').attr('src',src)
+    })
+  </script>
+</body>
+
+</html>

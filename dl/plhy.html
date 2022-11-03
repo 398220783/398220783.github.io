@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>批量还原</title>
+  <link rel="stylesheet" href="./css/scrollbar.css">
+   <!-- jQuery -->
+   <script src="./jQueryDownload/jquery-3.1.1.min.js"></script>
+   <!-- bootstrap -->
+   <link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css">
+   <script src="./bootstrap/js/bootstrap.min.js"></script>
+   <link rel="stylesheet" href="./css/pl.css">
+</head>
+<style>
+  body{
+    height: 1000px;
+  }
+</style>
+<body>
+  <div class="container" style="padding: 10px;padding-top: 50px;">
+    <div class="box">
+      <h1>批量还原</h1>
+      <div class="textbox">
+        <textarea id="url" cols="30" rows="10" placeholder="请输入链接,一行一个,回车换行"></textarea>
+      </div>
+      <div class="btngroup">
+        <button id="start">开始</button>
+      </div>
+    </div>
+    <div class="resultbox table-responsive">
+      <h3>执行结果</h3>
+      <div class="number">
+        <p style="color: green;margin-right: 8px;">成功 [ <span id="success">0</span> ]</p>
+        <p style="color: red;margin-left: 8px;">失败 [ <span id="error">0</span> ]</p>
+      </div>
+      <p style="color: red;text-align: center;">点击上方数字查看文本结果</p>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>长链接</th>
+            <th>短网址</th>
+          </tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="bigmt">
+    <div class="mtk">
+        <ul>
+            <li class="current" zh="zc">成功</li>
+            <li zh="yc">失败</li>
+        </ul>
+        <span class="glyphicon glyphicon-remove-sign" id="closebtn"></span>
+        <textarea></textarea>
+    </div>
+  <script>
+    //下拉菜单
+    $(function(){
+				$(".select p").click(function(e){
+					$(this).parent().toggleClass('open');
+					e.stopPropagation();
+				});
+				
+				$(".select ul li").click(function(e){
+					var _this=$(this);
+          $(this).parent().siblings().text(_this.text());
+          $(this).parent().siblings().attr('data-value',_this.attr('data-value'));
+					_this.addClass("Selected").siblings().removeClass("Selected");
+					$(this).parent().parent().removeClass("open");
+					e.stopPropagation();
+				});
+				
+				$(document).on('click',function(){
+					$(".select").removeClass("open");
+				})
+				
+			});
+  </script>
+  <script src="./layer/layer.js"></script>
+  <script src="./js/plhy.js"></script>
+</body>
+</html>

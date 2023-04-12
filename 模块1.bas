@@ -1,9 +1,9 @@
-Attribute VB_Name = "Ä£¿é1"
+Attribute VB_Name = "æ¨¡å—1"
 Sub RemoveDuplicatesAndMerge()
     Dim lastRow As Long
     Dim i As Long
     
-    lastRow = Cells(Rows.Count, "A").End(xlUp).Row
+    lastRow = Cells(Rows.Count, "c").End(xlUp).Row
     
     Range("A1:B" & lastRow).Sort key1:=Range("A1"), order1:=xlAscending, Header:=xlYes
         
@@ -20,7 +20,7 @@ Sub RemoveDuplicatesAndMerge()
     
     For j = 2 To cc
     
-    'ÅĞ¶Ïµ¥Ôª¸ñ¿Õ¸ñÓĞ¶àÉÙ¸ö
+    'åˆ¤æ–­å•å…ƒæ ¼ç©ºæ ¼æœ‰å¤šå°‘ä¸ª
 
 '    Range("d" & j) = "=LEN(C" & j & ")-LEN(SUBSTITUTE(C" & j & "," & """" & " " & """" & "," & """" & "" & """" & "))+1"
     sr = Range("c" & j)
@@ -32,6 +32,4 @@ Sub RemoveDuplicatesAndMerge()
 End Sub
 
 
-'´Ë´úÂë»á°´ÕÕAÁĞµÄÉıĞòÅÅĞò£¬È»ºó±éÀúËùÓĞĞĞ£¬Èç¹ûÔÚµ±Ç°ĞĞºÍÇ°Ò»ĞĞÖĞ¾ßÓĞÏàÍ¬µÄÊıÖµ£¬
-'Ôò½«ÏàÓ¦µÄBÁĞÖµºÏ²¢ÔÚÒ»Æğ£¬²¢É¾³ıµ±Ç°ĞĞ¡£Çë×¢Òâ£¬ÔÚºÏ²¢BÁĞÊı¾İÊ±£¬
-'´Ë´úÂëÊ¹ÓÃ¶ººÅÓë¿Õ¸ñ·Ö¸ô·û¡£Èç¹ûÄúĞèÒª²»Í¬µÄ·Ö¸ô·û£¬ÇëĞŞ¸Ä¸ÃÓï¾äÒÔÂú×ãÄúµÄÒªÇó¡£
+
